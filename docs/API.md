@@ -239,4 +239,3 @@ Connect to `wss://hcdcx-api.railway.app` with JWT authentication.
 - `scan:new` – New scan detected.
 - `security:update` – Security metrics changed.
 - `security:alert` – High-risk security alert.
-```
