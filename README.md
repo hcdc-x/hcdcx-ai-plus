@@ -70,41 +70,161 @@
 
 ```
 hcdcx-ai-plus/
-├── frontend/                # Next.js frontend application
-│   ├── app/                 # App router pages
-│   ├── components/          # Reusable UI components
-│   ├── lib/                 # API clients, hooks, utils
-│   ├── public/              # Static assets
-│   └── styles/              # Global CSS and Tailwind config
-├── backend/                 # Express API server
-│   ├── src/
-│   │   ├── controllers/     # Route handlers
-│   │   ├── models/          # Mongoose schemas
-│   │   ├── services/        # Business logic (encoding, security, AI)
-│   │   ├── middleware/      # Auth, rate limiting, error handling
-│   │   ├── websocket/       # Socket.IO event handlers
-│   │   └── utils/           # Helpers and constants
-│   ├── server.js            # Entry point
-│   └── Dockerfile           # For Railway deployment
-├── mobile/                  # Flutter cross‑platform app
-│   ├── lib/
-│   │   ├── screens/
-│   │   ├── services/
-│   │   └── widgets/
-│   └── pubspec.yaml
-├── ai-vision/               # Hugging Face Space for image enhancement
-│   ├── app.py               # Gradio / FastAPI endpoint
-│   └── requirements.txt
-├── .github/workflows/       # CI/CD pipelines
-│   └── deploy.yml
-├── docs/                    # Detailed documentation
-├── scripts/                 # Utility scripts
-├── .env.example             # Environment variables template
-├── DEPLOYMENT.md
+├── .env.example
+├── .gitignore
 ├── LICENSE
-├── CONTRIBUTING.md
+├── README.md
 ├── CODE_OF_CONDUCT.md
-└── README.md
+├── CONTRIBUTING.md
+├── DEPLOYMENT.md
+├── package.json
+├── turbo.json
+├── pnpm-workspace.yaml
+├── frontend/
+│   ├── .env.local.example
+│   ├── .eslintrc.json
+│   ├── .prettierrc
+│   ├── next.config.js
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   └── robots.txt
+│   ├── app/
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   ├── globals.css
+│   │   ├── (auth)/
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   └── register/
+│   │   │       └── page.tsx
+│   │   ├── dashboard/
+│   │   │   └── page.tsx
+│   │   ├── generator/
+│   │   │   └── page.tsx
+│   │   ├── scanner/
+│   │   │   └── page.tsx
+│   │   └── analytics/
+│   │       └── page.tsx
+│   ├── components/
+│   │   ├── ui/
+│   │   │   ├── Button.tsx
+│   │   │   ├── Card.tsx
+│   │   │   ├── Input.tsx
+│   │   │   └── GlassCard.tsx
+│   │   ├── layout/
+│   │   │   ├── Header.tsx
+│   │   │   ├── Sidebar.tsx
+│   │   │   └── Footer.tsx
+│   │   ├── dashboard/
+│   │   │   ├── CodeManager.tsx
+│   │   │   ├── LiveScanFeed.tsx
+│   │   │   └── SecurityPanel.tsx
+│   │   ├── generator/
+│   │   │   ├── CodeGeneratorForm.tsx
+│   │   │   └── HybridCodePreview.tsx
+│   │   ├── scanner/
+│   │   │   └── CameraScanner.tsx
+│   │   └── analytics/
+│   │       ├── ScanChart.tsx
+│   │       └── GeoHeatmap.tsx
+│   └── lib/
+│       ├── api/
+│       │   ├── client.ts
+│       │   ├── auth.ts
+│       │   ├── codes.ts
+│       │   └── scans.ts
+│       ├── hooks/
+│       │   ├── useAuth.ts
+│       │   ├── useSocket.ts
+│       │   └── useScanFeed.ts
+│       └── utils/
+│           └── cn.ts
+├── backend/
+│   ├── .env.example
+│   ├── .eslintrc.json
+│   ├── .prettierrc
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── railway.json
+│   ├── server.js
+│   └── src/
+│       ├── config/
+│       │   ├── database.js
+│       │   ├── redis.js
+│       │   └── cloudinary.js
+│       ├── controllers/
+│       │   ├── authController.js
+│       │   ├── codeController.js
+│       │   ├── scanController.js
+│       │   └── analyticsController.js
+│       ├── models/
+│       │   ├── User.js
+│       │   ├── Code.js
+│       │   ├── ScanLog.js
+│       │   ├── Token.js
+│       │   └── RiskLog.js
+│       ├── services/
+│       │   ├── hybridEncoder.js
+│       │   ├── securityService.js
+│       │   ├── aiVisionService.js
+│       │   └── analyticsService.js
+│       ├── middleware/
+│       │   ├── auth.js
+│       │   ├── rateLimit.js
+│       │   ├── errorHandler.js
+│       │   └── validation.js
+│       ├── websocket/
+│       │   └── socketHandler.js
+│       ├── routes/
+│       │   ├── authRoutes.js
+│       │   ├── codeRoutes.js
+│       │   ├── scanRoutes.js
+│       │   └── analyticsRoutes.js
+│       └── utils/
+│           ├── jwt.js
+│           ├── otp.js
+│           ├── ipGeolocation.js
+│           └── logger.js
+├── mobile/
+│   ├── .gitignore
+│   ├── pubspec.yaml
+│   ├── analysis_options.yaml
+│   └── lib/
+│       ├── main.dart
+│       ├── screens/
+│       │   ├── login_screen.dart
+│       │   ├── dashboard_screen.dart
+│       │   ├── scanner_screen.dart
+│       │   └── analytics_screen.dart
+│       ├── services/
+│       │   ├── api_service.dart
+│       │   ├── auth_service.dart
+│       │   └── socket_service.dart
+│       ├── widgets/
+│       │   ├── glass_card.dart
+│       │   └── scan_overlay.dart
+│       └── utils/
+│           └── constants.dart
+├── ai-vision/
+│   ├── app.py
+│   ├── requirements.txt
+│   ├── Dockerfile
+│   └── README.md
+├── .github/
+│   └── workflows/
+│       ├── deploy-backend.yml
+│       └── deploy-frontend.yml
+├── docs/
+│   ├── API.md
+│   ├── ARCHITECTURE.md
+│   └── SECURITY.md
+└── scripts/
+    ├── seed-db.js
+    └── generate-secret.js
 ```
 
 ## 🛠️ Local Development
