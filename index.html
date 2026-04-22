@@ -254,7 +254,7 @@
           <div><span class="text-gray-400">Monitoring</span><p class="font-medium">Sentry · Winston</p></div>
         </div>
         <div class="mt-6 pt-4 border-t border-white/10">
-          <span class="text-xs text-cyan-300 flex items-center gap-2"><i class="fab fa-github"></i> github.com/hcdc-x/hcdcx-ai-plus</span>
+          <span href="https://github.com/hcdc-x/hcdcx-ai-plus" class="text-xs text-cyan-300 flex items-center gap-2"><i class="fab fa-github"></i> github.com/hcdc-x/hcdcx-ai-plus</span>
         </div>
       </div>
       <div class="flex-1 glass-card rounded-3xl p-6 md:p-8" id="deploy">
@@ -330,23 +330,21 @@
   <div class="max-w-5xl mx-auto text-center">
     <h3 class="text-3xl font-bold mb-6">📚 Developer Hub</h3>
     <div class="flex flex-wrap justify-center gap-4">
-      <a href="#" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-book text-cyan-300 text-xl"></i> README.md</a>
-      <a href="#" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-code-branch text-blue-300 text-xl"></i> CONTRIBUTING</a>
-      <a href="#" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-shield-hal text-purple-300 text-xl"></i> SECURITY.md</a>
-      <a href="#" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-rocket text-cyan-300 text-xl"></i> DEPLOYMENT.md</a>
+      <a href="https://hcdc-x.github.io/hcdcx-ai-plus/README.md" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-book text-cyan-300 text-xl"></i> README.md</a>
+      <a href="https://hcdc-x.github.io/hcdcx-ai-plus/CONTRIBUTING.md" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-code-branch text-blue-300 text-xl"></i> CONTRIBUTING</a>
+      <a href="https://hcdc-x.github.io/hcdcx-ai-plus/SECURITY.md" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-shield-hal text-purple-300 text-xl"></i> SECURITY.md</a>
+      <a href="https://hcdc-x.github.io/hcdcx-ai-plus/DEPLOYMENT.md" class="glass-card px-8 py-4 rounded-xl flex items-center gap-3 hover-lift"><i class="fas fa-rocket text-cyan-300 text-xl"></i> DEPLOYMENT.md</a>
     </div>
     <p class="text-gray-400 text-sm mt-8">MIT licensed · Built with ❤️ by HCDC-X · Fully open source</p>
     <div class="mt-8 flex justify-center gap-6 text-2xl text-gray-400">
-      <i class="fab fa-github hover:text-cyan-300 transition"></i>
-      <i class="fab fa-x-twitter hover:text-cyan-300 transition"></i>
-      <i class="fab fa-discord hover:text-cyan-300 transition"></i>
+      <i href="https://github.com/hcdc-x/hcdcx-ai-plus" class="fab fa-github hover:text-cyan-300 transition"></i>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
 <footer class="border-t border-white/5 py-6 text-xs text-gray-500 flex justify-between px-6">
-  <span>© 2026 HCDC-X AI+ · Adaptive HybridCode Platform</span>
+  <span>&copy; <span id="year"></span> HCDC-X AI+ Technology · Adaptive HybridCode Platform</span>
   <span>v1.0.0 · Deployed on Netlify & Railway</span>
 </footer>
 
@@ -356,6 +354,7 @@
 </div>
 
 <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
   (function(){
     // Smooth scroll for anchor links (optional)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
