@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>HCDC-X AI+ | Adaptive Secure HybridCode Platform</title>
+  <!-- Google Fonts & simple reset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0c0f;
+      background-image: radial-gradient(circle at 30% 10%, rgba(0, 255, 255, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 80%, rgba(160, 32, 240, 0.08) 0%, transparent 50%);
+      color: #eef4ff;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    /* Glassmorphism & Neon */
+    .glass {
+      background: rgba(15, 20, 30, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(0, 255, 255, 0.05) inset;
+    }
+
+    .glass-card {
+      background: rgba(8, 15, 25, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 128, 255, 0.2);
+      border-radius: 24px;
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0, 255, 255, 0.5);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.15), 0 10px 30px -5px #000;
+      transform: translateY(-3px);
+    }
+
+    .neon-text-cyan {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff80, 0 0 20px #00ffff40;
+    }
+
+    .neon-border {
+      box-shadow: 0 0 0 1px rgba(0, 255, 255, 0.3), 0 0 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, #00ffff 0%, #0080ff 100%);
+      border: none;
+      color: #0b0e14;
+      font-weight: 700;
+      padding: 12px 32px;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      box-shadow: 0 0 18px #00ffff80, 0 4px 12px rgba(0,0,0,0.3);
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-glow:hover {
+      box-shadow: 0 0 28px #00ffff, 0 0 40px #0080ff;
+      transform: scale(1.02);
+    }
+
+    /* Grid / layout */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 0 12px #00ffff66);
+    }
+
+    .logo-text-img {
+      height: 36px;
+      width: auto;
+      filter: drop-shadow(0 0 8px #0080ff);
+    }
+
+    .badge {
+      background: rgba(0, 255, 255, 0.1);
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid #00ffff33;
+      color: #b0f0ff;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin: 48px 0;
+    }
+
+    .tech-pill {
+      background: rgba(0, 128, 255, 0.08);
+      border: 1px solid #0080ff33;
+      border-radius: 40px;
+      padding: 6px 16px;
+      font-size: 0.9rem;
+      color: #c6e2ff;
+      backdrop-filter: blur(4px);
+    }
+
+    /* animated stream background */
+    .bg-grid {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      background-image: 
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    .footer {
+      border-top: 1px solid #00ffff22;
+      margin-top: 70px;
+      padding: 32px 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float-animation {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: start;
+        gap: 16px;
+      }
+      .logo-text-img {
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  
+  <div class="container">
+    <!-- Header with both logos -->
+    <header>
+      <div class="logo-area">
+        <!-- Logo only (assets/logo.png) -->
+        <img src="assets/logo.png" alt="HCDC-X Logo" class="logo-icon">
+        <!-- Logo with text (assets/logo_wbt.png) -->
+        <img src="assets/logo_wbt.png" alt="HCDC-X AI+ with text" class="logo-text-img">
+      </div>
+      <div style="display: flex; gap: 16px;">
+        <span class="badge">🔐 Zero‑Trust Security</span>
+        <span class="badge">⚡ Real‑time AI</span>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div style="margin: 40px 0 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+      <div style="max-width: 700px;">
+        <h1 style="font-size: 3.8rem; font-weight: 700; line-height: 1.1; background: linear-gradient(135deg, #fff 0%, #a0e9ff 80%); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 20px;">
+          Adaptive Secure <br><span style="color: #00ffff; text-shadow: 0 0 20px #00ffff;">HybridColor</span> Dynamic Code
+        </h1>
+        <p style="font-size: 1.3rem; color: #b8cef0; margin-bottom: 30px; max-width: 600px;">
+          Next‑gen intelligent encoding ecosystem with multi‑layer hybrid codes, AI‑powered scanning, and real‑time analytics.
+        </p>
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+          <button class="btn-glow">✨ Generate Code</button>
+          <button style="background: transparent; border: 1.5px solid #00ffff; color: #00ffff; padding: 12px 32px; border-radius: 60px; font-weight: 600; backdrop-filter: blur(8px);">Explore Dashboard →</button>
+        </div>
+      </div>
+      <div class="float-animation" style="margin-top: 20px;">
+        <!-- decorative hybrid code visual (3D rotating feel) -->
+        <div style="width: 280px; height: 280px; background: radial-gradient(circle at 30% 30%, #00ffff20, #0a0f1a); border-radius: 48px; display: flex; align-items: center; justify-content: center; border: 1px solid #00ffff; box-shadow: 0 0 60px #00ffff33;">
+          <img src="assets/logo.png" style="width: 140px; opacity: 0.9; filter: drop-shadow(0 0 30px cyan);" alt="HCDC-X cube">
+        </div>
+      </div>
+    </div>
+
+    <!-- core stats / quick facts -->
+    <div style="display: flex; gap: 28px; flex-wrap: wrap; margin: 40px 0;">
+      <div class="glass-card" style="padding: 20px 32px; flex:1;">
+        <div style="font-size: 2.5rem; font-weight: 700; color: #00ffff;">3x</div>
+        <div style="color: #b0caf0;">Data density via RGB layers</div>
+      </div>
+      <div class="glass-card" style="padding: 20px 32px; flex:1;">
+        <div style="font-size: 2.5rem; font-weight: 700; color: #a020f0;">0–100</div>
+        <div style="color: #b0caf0;">AI risk scoring engine</div>
+      </div>
+      <div class="glass-card" style="padding: 20px 32px; flex:1;">
+        <div style="font-size: 2.5rem; font-weight: 700; color: #0080ff;">5s</div>
+        <div style="color: #b0caf0;">Dynamic code refresh</div>
+      </div>
+    </div>
+
+    <!-- Main content: README-like info organized in sections -->
+    <!-- FEATURES (Hybrid Code, AI Vision, Security, Analytics) -->
+    <div style="margin: 60px 0 20px;">
+      <h2 style="font-size: 2.4rem; margin-bottom: 12px; display: flex; gap: 10px;"><span class="neon-text-cyan">🚀</span> Core Capabilities</h2>
+      <div class="feature-grid">
+        <div class="glass-card" style="padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">🔐</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Hybrid Code System</h3>
+          <p style="color: #cbd5f0;">QR matrix + 1D barcode + RGB color layers — up to 3× data storage. Dynamic time‑based codes (5–30s). Adaptive engine adjusts density and color depth.</p>
+        </div>
+        <div class="glass-card" style="padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">🤖</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 12px;">AI Vision Engine</h3>
+          <p style="color: #cbd5f0;">Real‑time denoise, contrast/brightness correction, lighting adaptation. QR + barcode recognition with zxing‑wasm, Reed‑Solomon error recovery.</p>
+        </div>
+        <div class="glass-card" style="padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">🛡️</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Zero‑Trust Security</h3>
+          <p style="color: #cbd5f0;">JWT + refresh rotation, TOTP 2FA, AI risk scoring (0–100), anti‑counterfeit detection, real‑time alerts & behavioral analysis.</p>
+        </div>
+        <div class="glass-card" style="padding: 28px;">
+          <div style="font-size: 2.2rem; margin-bottom: 16px;">📊</div>
+          <h3 style="font-size: 1.8rem; margin-bottom: 12px;">Real‑Time Analytics</h3>
+          <p style="color: #cbd5f0;">Live scan feed, geographic heatmap (Mapbox), device distribution, time‑based trends, and security risk dashboard with WebSocket sync.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TECH STACK & DEPLOYMENT (from README) -->
+    <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 30px; margin: 50px 0;">
+      <div class="glass" style="padding: 32px;">
+        <h3 style="font-size: 2rem; margin-bottom: 24px; display: flex; gap: 10px;"><span style="color: #00ffff;">⚙️</span> Tech Stack</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px;">
+          <span class="tech-pill">React 18 + Next.js 14</span>
+          <span class="tech-pill">Tailwind CSS + Framer</span>
+          <span class="tech-pill">Three.js / R3F</span>
+          <span class="tech-pill">Node.js + Express</span>
+          <span class="tech-pill">Socket.IO</span>
+          <span class="tech-pill">MongoDB Atlas</span>
+          <span class="tech-pill">Supabase</span>
+          <span class="tech-pill">Cloudinary</span>
+          <span class="tech-pill">TensorFlow.js / OpenCV</span>
+          <span class="tech-pill">Flutter (mobile)</span>
+        </div>
+        <h4 style="font-size: 1.4rem; margin: 24px 0 16px;">📡 Deployment (Free Tier)</h4>
+        <ul style="list-style: none; color: #c0d4f0;">
+          <li style="padding: 6px 0;">🌐 Frontend → Netlify (100GB bandwidth)</li>
+          <li style="padding: 6px 0;">🖥️ Backend → Railway (0.5GB RAM, built‑in Redis)</li>
+          <li style="padding: 6px 0;">🗄️ Database → MongoDB Atlas M0 (512MB)</li>
+          <li style="padding: 6px 0;">📦 Storage → Supabase (1GB) + Cloudinary (25GB)</li>
+          <li style="padding: 6px 0;">🤖 AI Inference → Hugging Face Spaces</li>
+          <li style="padding: 6px 0;">📧 Email → Resend (100/day) • Maps → Mapbox (50k loads)</li>
+        </ul>
+      </div>
+      <div class="glass" style="padding: 32px;">
+        <h3 style="font-size: 2rem; margin-bottom: 24px; display: flex; gap: 10px;"><span style="color: #a020f0;">📋</span> Platform Modules</h3>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div><span style="color:#00ffff;">●</span> Landing with 3D rotating code</div>
+          <div><span style="color:#00ffff;">●</span> Auth (JWT + OTP / Glass card)</div>
+          <div><span style="color:#00ffff;">●</span> Dashboard: Code Manager, Live Scan Feed, Security Panel</div>
+          <div><span style="color:#00ffff;">●</span> Generator: URL/Text → Hybrid (QR/Barcode/Hybrid/Adaptive)</div>
+          <div><span style="color:#00ffff;">●</span> Scanner: Full‑screen camera, AI overlay, real‑time results</div>
+          <div><span style="color:#00ffff;">●</span> Analytics: Charts, geo heatmap, device stats</div>
+          <div><span style="color:#00ffff;">●</span> Mobile: Flutter with native scan & sync</div>
+        </div>
+        <div style="margin-top: 28px; background: #00ffff10; border-radius: 20px; padding: 18px; border: 1px dashed #00ffff;">
+          <span style="font-weight: 700; color: #fff;">🔒 Security AI:</span> Isolation Forest, LSTM anomaly detection, dynamic risk actions (allow/limit/block)
+        </div>
+      </div>
+    </div>
+
+    <!-- Hybrid Encoding & Adaptive engine details (like README architecture) -->
+    <div class="glass-card" style="padding: 36px; margin: 30px 0;">
+      <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+        <div style="flex:2">
+          <h3 style="font-size: 2rem; margin-bottom: 20px; color: #a0dcff;">🧬 HybridCode Engine</h3>
+          <p style="margin-bottom: 20px; font-size: 1.1rem;">Proprietary multi‑layer encoding: Core data in QR, fast‑ID in barcode, extended metadata in RGB channels. Adaptive compression (Base64 / simplified Huffman).</p>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div><span style="color:#00ffff; font-weight:700;">QR Mode</span> — standard</div>
+            <div><span style="color:#0080ff; font-weight:700;">Barcode</span> — CODE128</div>
+            <div><span style="color:#a020f0; font-weight:700;">Hybrid</span> — 2-3 color layers</div>
+            <div><span style="color:#ffaa00; font-weight:700;">AI Adaptive</span> — auto‑config</div>
+          </div>
+        </div>
+        <div style="flex:1; display: flex; justify-content: center; align-items: center;">
+          <div style="background: #0a101f; border-radius: 24px; padding: 18px 28px; border: 1px solid #00ffff; box-shadow: 0 0 30px #00ffff1a;">
+            <img src="assets/logo_wbt.png" style="height: 50px; filter: brightness(1.2);" alt="HCDC-X text">
+            <div style="font-size: 0.9rem; color: #9bbdf0;">Dynamic · Secure · Adaptive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security & tracking system -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0;">
+      <div class="glass" style="padding: 30px;">
+        <h4 style="font-size: 1.8rem; margin-bottom: 20px;">🛡️ Zero‑Trust & DCHC Tracking</h4>
+        <p>Every scan logged: device, IP‑based location, timestamp, user ID. WebSocket sync for live feed. Risk logs with triggers (unusual location, rapid scans, device fingerprint).</p>
+        <div style="margin-top: 20px; background: #ff000010; padding: 16px; border-radius: 18px;">
+          <span style="color: #ff7b7b;">⚠️ Anti‑counterfeit:</span> Color checksum validation & AI‑powered fake detection.
+        </div>
+      </div>
+      <div class="glass" style="padding: 30px;">
+        <h4 style="font-size: 1.8rem; margin-bottom: 20px;">📱 Cross‑Platform Ready</h4>
+        <p>Flutter mobile app with native camera, login, real‑time sync, and analytics. Web version deployed on Netlify. All backend services use free‑tier resources, ready for production.</p>
+        <div style="display: flex; margin-top: 24px; gap: 12px;">
+          <span style="background: #00000040; padding: 6px 18px; border-radius: 40px;">iOS / Android</span>
+          <span style="background: #00000040; padding: 6px 18px; border-radius: 40px;">Web App</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Call to action / open source -->
+    <div style="text-align: center; margin: 70px 0 40px;">
+      <div class="glass" style="display: inline-block; padding: 8px 32px 8px 24px; border-radius: 60px; margin-bottom: 30px;">
+        <span style="display: flex; gap: 20px; align-items: center;">
+          <img src="assets/logo.png" style="height: 28px;"> 
+          <span style="font-weight: 600;">HCDC-X AI+ · MIT Licensed</span>
+          <span style="color: #00ffff;">⭐ Star on GitHub</span>
+        </span>
+      </div>
+      <h2 style="font-size: 2.8rem; margin-bottom: 16px;">Deploy your own <span class="neon-text-cyan">HybridCode</span> ecosystem</h2>
+      <p style="color: #b8cef0; max-width: 700px; margin: 0 auto 28px;">Full‑stack production‑grade platform with zero‑cost free tier deployment.</p>
+      <button class="btn-glow" style="font-size: 1.2rem; padding: 16px 48px;">🚀 Get Started — it's free</button>
+    </div>
+
+    <!-- Footer with README references -->
+    <div class="footer">
+      <div style="display: flex; gap: 20px;">
+        <img src="assets/logo_wbt.png" style="height: 28px;" alt="HCDC-X">
+        <span style="color: #98aec6;">© 2026 HCDC-X AI+</span>
+      </div>
+      <div style="display: flex; gap: 32px; color: #9ab8d9;">
+        <span>Docs: API · Architecture · Security</span>
+        <span>GitHub: hcdc-x/hcdcx-ai-plus</span>
+        <span>Status: ● All systems operational</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- tiny interactive script (background data stream effect simulation) -->
+  <script>
+    (function() {
+      // subtle console reminder, and a simple dynamic greeting
+      console.log('%c🚀 HCDC-X AI+ | HybridColor Dynamic Code Platform', 'font-size:16px; background:#0a0f1a; color:#00ffff; padding:6px; border-radius:8px;');
+      
+      // Optional: add a little animation to the floating cube (already CSS)
+      // You can also implement a "live scan feed" simulation but not needed.
+      const style = document.createElement('style');
+      style.innerHTML = `
+        .bg-grid {
+          animation: drift 30s linear infinite;
+        }
+        @keyframes drift {
+          0% { background-position: 0 0; }
+          100% { background-position: 96px 96px; }
+        }
+      `;
+      document.head.appendChild(style);
+    })();
+  </script>
+  <!-- ensure assets path: assets/logo.png and assets/logo_wbt.png exist -->
+  <!-- Both logos are referenced multiple times, representing brand identity. -->
+</body>
+</html>
