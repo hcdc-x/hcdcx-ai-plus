@@ -15,7 +15,7 @@ The HCDC-X team takes security issues seriously. We appreciate your efforts to r
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, send an email to **[security@hcdcx.ai](mailto:security@hcdcx.ai)**.
+Instead, send an email to **[contact.hcdcx@gmail.com](mailto:contact.hcdcx@gmail.com)**.
 
 You should receive a response within **48 hours**. If for some reason you do not, please follow up via email to ensure we received your original message.
 
