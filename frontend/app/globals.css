@@ -1,0 +1,174 @@
+/* frontend/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 180 100% 50%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 210 100% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 280 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 180 100% 50%;
+
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 5%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 5%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 5%;
+
+    --primary: 180 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 100% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    --accent: 280 100% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 85%;
+    --input: 0 0% 90%;
+    --ring: 180 100% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-muted-foreground/30;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism utilities */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md;
+  }
+
+  .glass-card {
+    @apply border border-white/10 bg-black/20 backdrop-blur-xl;
+  }
+
+  .glass-hover {
+    @apply transition-all duration-300 hover:border-neon-cyan/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)];
+  }
+
+  /* Neon glow effects */
+  .glow-cyan {
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  }
+
+  .glow-blue {
+    text-shadow: 0 0 10px #0080ff, 0 0 20px #0080ff;
+  }
+
+  .glow-purple {
+    text-shadow: 0 0 10px #a020f0, 0 0 20px #a020f0;
+  }
+
+  .glow-box-cyan {
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+  }
+
+  /* Ripple animation */
+  .ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .ripple::after {
+    content: '';
+    @apply absolute inset-0 scale-0 rounded-full bg-white/20 opacity-0 transition-all duration-500;
+  }
+
+  .ripple:active::after {
+    @apply scale-100 opacity-100 transition-none;
+  }
+
+  /* Animated background */
+  .bg-animated-stream {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(0, 255, 255, 0.05) 50%,
+      transparent 70%
+    );
+    background-size: 200% 200%;
+  }
+}
+
+/* Three.js canvas styles */
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* Mapbox popup customization */
+.mapboxgl-popup-content {
+  @apply glass-card !border-neon-cyan/30 !text-foreground;
+}
+
+.mapboxgl-popup-tip {
+  @apply !border-t-neon-cyan/30;
+}
+
+/* Recharts customization */
+.recharts-tooltip-wrapper {
+  @apply !bg-card/90 !backdrop-blur-md !border !border-border !rounded-lg !shadow-lg;
+}
