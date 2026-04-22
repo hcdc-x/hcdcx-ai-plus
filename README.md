@@ -100,6 +100,7 @@ hcdcx-ai-plus/
 ├── docs/                    # Detailed documentation
 ├── scripts/                 # Utility scripts
 ├── .env.example             # Environment variables template
+├── DEPLOYMENT.md
 ├── LICENSE
 ├── CONTRIBUTING.md
 ├── CODE_OF_CONDUCT.md
