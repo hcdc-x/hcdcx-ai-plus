@@ -280,7 +280,7 @@ This project is licensed under the MIT License – see the [LICENSE](LICENSE) fi
 ## 📬 Contact
 
 - **GitHub Issues**: [https://github.com/hcdc-x/hcdcx-ai-plus/issues](https://github.com/hcdc-x/hcdcx-ai-plus/issues)  
-- **Email**: [admin.hcdcx@gmail.com](mailto:admin.hcdcx@gmail.com) (example)  
+- **Email**: [admin.hcdcx@gmail.com](mailto:admin.hcdcx@gmail.com)  
 
 ---
 
