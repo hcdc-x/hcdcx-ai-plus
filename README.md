@@ -1,6 +1,6 @@
 # HCDC-X AI+ Platform
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/xxx/deploy-status)](https://app.netlify.com/sites/hcdcx-ai/deploys)
+[![Netlify](https://img.shields.io/badge/Netlify-Deployed-success?logo=netlify&style=flat-square)](https://hcdcx-ai.netlify.app)
 [![Railway](https://img.shields.io/badge/Railway-Deployed-success)](https://hcdcx-api.railway.app)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
