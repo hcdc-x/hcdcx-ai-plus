@@ -7,8 +7,6 @@
 
 **HCDC-X AI+** is a production‑grade intelligent encoding ecosystem featuring a multi‑layer hybrid code system (QR + Barcode + RGB color layers), AI‑powered scanning, adaptive encoding, zero‑trust security, and real‑time analytics — all wrapped in a futuristic, glassmorphism UI.
 
-![HCDC-X Dashboard Preview](docs/preview.gif)
-
 ---
 
 ## 🚀 Features
