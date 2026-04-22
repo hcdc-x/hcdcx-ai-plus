@@ -1,4 +1,3 @@
-```markdown
 # HCDC-X AI+ Platform
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/xxx/deploy-status)](https://app.netlify.com/sites/hcdcx-ai/deploys)
@@ -104,8 +103,6 @@ hcdcx-ai-plus/
 ├── LICENSE
 └── README.md
 ```
-
----
 
 ## 🛠️ Local Development
 
