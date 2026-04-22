@@ -30,7 +30,7 @@ This document outlines the guidelines and best practices to help you get started
 
 ## 📜 Code of Conduct
 
-This project and everyone participating in it is governed by the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [contact@hcdcx.ai](mailto:contact@hcdcx.ai).
+This project and everyone participating in it is governed by the [Contributor Covenant Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [contact.hcdcx@gmail.com](mailto:contact.hcdcx@gmail.com).
 
 ---
 
