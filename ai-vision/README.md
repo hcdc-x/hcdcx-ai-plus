@@ -52,8 +52,3 @@ None required. All configuration is in code.
 ## License
 
 MIT
-```
-
-这些文件构成了一个独立的 AI 图像增强微服务，可与主后端通过 HTTP API 集成。在 Hugging Face Spaces 上部署后，将 Space URL 填入后端的 `HF_SPACE_URL` 环境变量即可使用。
-
-是否需要继续提供其他目录的文件（例如 GitHub Actions 工作流、脚本或文档）？
