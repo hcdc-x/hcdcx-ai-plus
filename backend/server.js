@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+console.log("Starting server...");
+
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
@@ -39,7 +41,27 @@ const io = new Server(server, {
 });
 
 // Connect to MongoDB
-connectDB();
+const startServer = async () => {
+  try {
+    console.log("Starting server...");
+
+    await connectDB();
+    logger.info("MongoDB connected");
+
+    const PORT = process.env.PORT || 8080;
+
+    server.listen(PORT, "0.0.0.0", () => {
+      logger.info(`🚀 Backend running on port ${PORT}`);
+      logger.info(`📡 Environment: ${process.env.NODE_ENV || "development"}`);
+    });
+
+  } catch (err) {
+    logger.error("Startup failed:", err);
+    process.exit(1); // IMPORTANT for Railway detection
+  }
+};
+
+startServer();
 
 // Middleware
 app.use(helmet());
@@ -57,7 +79,11 @@ app.use('/api/', rateLimiter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.status(200).json({
+    status: 'ok',
+    uptime: process.uptime(),
+    timestamp: Date.now()
+  });
 });
 
 // API Routes
@@ -74,7 +100,7 @@ app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 8080;
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
   logger.info(`🚀 HCDC-X AI+ Backend running on port ${PORT}`);
   logger.info(`🔌 WebSocket server ready`);
   logger.info(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
