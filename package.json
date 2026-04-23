@@ -9,7 +9,7 @@
     "postinstall": "cd backend && npm install"
   },
   "engines": {
-    "node": "18.20.4"
+    "node": "20.x"
   },
   "keywords": [
     "hybrid-code",
