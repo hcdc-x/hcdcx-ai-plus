@@ -4,9 +4,9 @@
   "private": true,
   "description": "HCDC-X AI+ Adaptive Secure HybridColor Dynamic Code Platform",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "start": "turbo start",
+    "dev": "echo skip",
+    "build": "echo skip",
+    "start": "node backend/server.js",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "test": "turbo test",
