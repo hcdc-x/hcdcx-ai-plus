@@ -168,6 +168,7 @@ hcdcx-ai-plus/
 │       ├── services/
 │       │   ├── hybridEncoder.js
 │       │   ├── securityService.js
+│       │   ├── emailService.js
 │       │   ├── aiVisionService.js
 │       │   └── analyticsService.js
 │       ├── middleware/
