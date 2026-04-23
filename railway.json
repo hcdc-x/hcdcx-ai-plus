@@ -1,7 +1,5 @@
 {
-  "build": {
-    "rootDir": "backend"
-  },
+  "$schema": "https://railway.app/railway.schema.json",
   "deploy": {
     "startCommand": "cd backend && npm install && npm start"
   }
