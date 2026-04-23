@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 console.log("Starting server...");
+console.log("BOOT: server file loaded");
 
 const express = require('express');
 const http = require('http');
@@ -97,14 +98,6 @@ setupSocket(io);
 
 // Error handling middleware (should be last)
 app.use(errorHandler);
-
-// Start server
-const PORT = process.env.PORT || 8080;
-server.listen(PORT, "0.0.0.0", () => {
-  logger.info(`🚀 HCDC-X AI+ Backend running on port ${PORT}`);
-  logger.info(`🔌 WebSocket server ready`);
-  logger.info(`📡 Environment: ${process.env.NODE_ENV || 'development'}`);
-});
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
