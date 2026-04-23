@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "HCDC-X AI+ Adaptive Secure HybridColor Dynamic Code Platform",
+  "packageManager": "pnpm@9.1.0",
   "scripts": {
     "start": "node backend/server.js",
     "postinstall": "cd backend && npm install"
@@ -25,5 +26,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hcdc-x/hcdcx-ai-plus.git"
+  },
+  "dependencies": {
+    "turbo": "^2.9.6"
   }
 }
