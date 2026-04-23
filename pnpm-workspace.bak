@@ -1,6 +1,0 @@
-packages:
-  - "frontend"
-  - "backend"
-  - "mobile"
-  - "ai-vision"
-  - "shared"
