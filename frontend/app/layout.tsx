@@ -1,7 +1,7 @@
 // frontend/app/layout.tsx
 import type { Metadata, Viewport } from 'next';
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+import { Inter } from "next/font/google";
+export const inter = Inter({ subsets: ["latin"] });
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from '@/lib/hooks/useAuth';
 import { SocketProvider } from '@/lib/hooks/useSocket';

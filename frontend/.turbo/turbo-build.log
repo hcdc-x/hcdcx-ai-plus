@@ -1,0 +1,83 @@
+
+> @hcdcx/frontend@1.0.0 build D:\Storage Space\HCDC-X\hcdcx-ai-plus\frontend
+> next build
+
+  ▲ Next.js 14.2.4
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · optimizeCss
+    · instrumentationHook
+
+   Creating an optimized production build ...
+warn  - It seems like you don't have a global error handler set up. It is recommended that you add a global-error.js file with Sentry instrumentation so that React rendering errors are reported to Sentry. Read more: https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/#react-render-errors-in-app-router (you can suppress this warning by setting SENTRY_SUPPRESS_GLOBAL_ERROR_HANDLER_FILE_WARNING=1 as environment variable)
+[@sentry/nextjs] The Sentry SDK has enabled source map generation for your Next.js app. If you don't want to serve Source Maps to your users, either set the `sourcemaps.deleteSourcemapsAfterUpload` option to true, or manually delete the source maps after the build. In future Sentry SDK versions `sourcemaps.deleteSourcemapsAfterUpload` will default to `true`. If you do not want to generate and upload sourcemaps, set the `sourcemaps.disable` option in `withSentryConfig()`.
+Failed to compile.
+
+./app/layout.tsx
+Module not found: Can't resolve 'geist/font/mono'
+
+https://nextjs.org/docs/messages/module-not-found
+
+./components/dashboard/CodeManager.tsx:23:1
+Module not found: Can't resolve 'date-fns'
+[0m [90m 21 |[39m [36mimport[39m { [33mInput[39m } [36mfrom[39m [32m'@/components/ui/Input'[39m[33m;[39m[0m
+[0m [90m 22 |[39m [36mimport[39m { api } [36mfrom[39m [32m'@/lib/api/client'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 23 |[39m [36mimport[39m { formatDistanceToNow } [36mfrom[39m [32m'date-fns'[39m[33m;[39m[0m
+[0m [90m    |[39m [31m[1m^[22m[39m[0m
+[0m [90m 24 |[39m [36mimport[39m toast [36mfrom[39m [32m'react-hot-toast'[39m[33m;[39m[0m
+[0m [90m 25 |[39m [36mimport[39m {[0m
+[0m [90m 26 |[39m   [33mDropdownMenu[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/dashboard/page.tsx
+
+./components/dashboard/CodeManager.tsx:25:1
+Module not found: Can't resolve '@/components/ui/DropdownMenu'
+[0m [90m 23 |[39m [36mimport[39m { formatDistanceToNow } [36mfrom[39m [32m'date-fns'[39m[33m;[39m[0m
+[0m [90m 24 |[39m [36mimport[39m toast [36mfrom[39m [32m'react-hot-toast'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 25 |[39m [36mimport[39m {[0m
+[0m [90m    |[39m [31m[1m^[22m[39m[0m
+[0m [90m 26 |[39m   [33mDropdownMenu[39m[33m,[39m[0m
+[0m [90m 27 |[39m   [33mDropdownMenuContent[39m[33m,[39m[0m
+[0m [90m 28 |[39m   [33mDropdownMenuItem[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/dashboard/page.tsx
+
+./components/dashboard/LiveScanFeed.tsx:9:1
+Module not found: Can't resolve 'date-fns'
+[0m [90m  7 |[39m [36mimport[39m { [33mGlassCard[39m } [36mfrom[39m [32m'@/components/ui/GlassCard'[39m[33m;[39m[0m
+[0m [90m  8 |[39m [36mimport[39m { useSocket } [36mfrom[39m [32m'@/lib/hooks/useSocket'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m  9 |[39m [36mimport[39m { formatDistanceToNow } [36mfrom[39m [32m'date-fns'[39m[33m;[39m[0m
+[0m [90m    |[39m [31m[1m^[22m[39m[0m
+[0m [90m 10 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils/cn'[39m[33m;[39m[0m
+[0m [90m 11 |[39m[0m
+[0m [90m 12 |[39m [36minterface[39m [33mScanLog[39m {[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/dashboard/page.tsx
+
+./components/layout/Header.tsx:22:1
+Module not found: Can't resolve '@/components/ui/DropdownMenu'
+[0m [90m 20 |[39m [36mimport[39m { useAuth } [36mfrom[39m [32m'@/lib/hooks/useAuth'[39m[33m;[39m[0m
+[0m [90m 21 |[39m [36mimport[39m { cn } [36mfrom[39m [32m'@/lib/utils/cn'[39m[33m;[39m[0m
+[0m[31m[1m>[22m[39m[90m 22 |[39m [36mimport[39m {[0m
+[0m [90m    |[39m [31m[1m^[22m[39m[0m
+[0m [90m 23 |[39m   [33mDropdownMenu[39m[33m,[39m[0m
+[0m [90m 24 |[39m   [33mDropdownMenuContent[39m[33m,[39m[0m
+[0m [90m 25 |[39m   [33mDropdownMenuItem[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./app/analytics/page.tsx
+
+
+> Build failed because of webpack errors
+ ELIFECYCLE  Command failed with exit code 1.
