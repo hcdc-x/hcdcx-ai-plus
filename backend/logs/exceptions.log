@@ -1,0 +1,35 @@
+[2026-04-23 16:21:07] ERROR: uncaughtException: Cannot find module '../services/emailService'
+Require stack:
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\controllers\authController.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\routes\authRoutes.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\server.js
+Error: Cannot find module '../services/emailService'
+Require stack:
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\controllers\authController.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\routes\authRoutes.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\controllers\authController.js:8:35)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+Error: Cannot find module '../services/emailService'
+Require stack:
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\controllers\authController.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\routes\authRoutes.js
+- D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1207:15)
+    at Module._load (node:internal/modules/cjs/loader:1038:27)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (D:\Storage Space\HCDC-X\hcdcx-ai-plus\backend\src\controllers\authController.js:8:35)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at Module.require (node:internal/modules/cjs/loader:1289:19)

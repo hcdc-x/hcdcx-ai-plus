@@ -1,6 +1,5 @@
 require('dotenv').config();
 
-console.log("Starting server...");
 console.log("BOOT: server file loaded");
 
 const express = require('express');
@@ -28,11 +27,22 @@ const analyticsRoutes = require('./src/routes/analyticsRoutes');
 // Import WebSocket handler
 const { setupSocket } = require('./src/websocket/socketHandler');
 
-// Initialize Express app
+// ========================
+// INIT APP
+// ========================
 const app = express();
 const server = http.createServer(app);
 
-// Initialize Socket.IO
+// ========================
+// HEALTH CHECK (VERY IMPORTANT - MUST BE FIRST)
+// ========================
+app.get('/health', (req, res) => {
+  res.status(200).send("OK");
+});
+
+// ========================
+// SOCKET IO
+// ========================
 const io = new Server(server, {
   cors: {
     origin: process.env.CLIENT_URL || 'http://localhost:3000',
@@ -41,30 +51,9 @@ const io = new Server(server, {
   transports: ['websocket', 'polling'],
 });
 
-// Connect to MongoDB
-const startServer = async () => {
-  try {
-    console.log("BOOT: starting server");
-
-    const PORT = process.env.PORT || 8080;
-
-    server.listen(PORT, "0.0.0.0", () => {
-      console.log(`SERVER LIVE ON ${PORT}`);
-    });
-
-    connectDB()
-      .then(() => console.log("MongoDB connected"))
-      .catch(err => console.error("MongoDB failed:", err));
-
-  } catch (err) {
-    console.error("Fatal startup error:", err);
-    process.exit(1);
-  }
-};
-
-startServer();
-
-// Middleware
+// ========================
+// MIDDLEWARE
+// ========================
 app.use(helmet());
 app.use(cors({
   origin: process.env.CLIENT_URL || 'http://localhost:3000',
@@ -73,33 +62,50 @@ app.use(cors({
 app.use(compression());
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-app.use(morgan('combined', { stream: { write: (message) => logger.info(message.trim()) } }));
+app.use(morgan('combined'));
 
 // Rate limiting
 app.use('/api/', rateLimiter);
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).send("OK");
-});
-
-// API Routes
+// ========================
+// ROUTES
+// ========================
 app.use('/api/auth', authRoutes);
 app.use('/api/codes', codeRoutes);
 app.use('/api/scans', scanRoutes);
 app.use('/api/analytics', analyticsRoutes);
 
-// WebSocket setup
+// ========================
+// SOCKET SETUP
+// ========================
 setupSocket(io);
 
-// Error handling middleware (should be last)
+// ========================
+// ERROR HANDLER
+// ========================
 app.use(errorHandler);
 
-// Graceful shutdown
+// ========================
+// START SERVER (NON-BLOCKING DB)
+// ========================
+const PORT = process.env.PORT || 8080;
+
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`🚀 SERVER RUNNING ON PORT ${PORT}`);
+
+  // DB connect AFTER server is live (IMPORTANT FIX)
+  connectDB()
+    .then(() => console.log("✅ MongoDB connected"))
+    .catch(err => console.error("❌ MongoDB error:", err));
+});
+
+// ========================
+// GRACEFUL SHUTDOWN
+// ========================
 process.on('SIGTERM', () => {
-  logger.info('SIGTERM signal received: closing HTTP server');
+  console.log('SIGTERM received, shutting down...');
   server.close(() => {
-    logger.info('HTTP server closed');
+    console.log('Server closed');
     process.exit(0);
   });
 });
