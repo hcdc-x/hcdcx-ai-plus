@@ -4,32 +4,11 @@
   "private": true,
   "description": "HCDC-X AI+ Adaptive Secure HybridColor Dynamic Code Platform",
   "scripts": {
-    "dev": "echo skip",
-    "build": "echo skip",
     "start": "node backend/server.js",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "test": "turbo test",
-    "clean": "turbo clean",
-    "prepare": "husky install"
-  },
-  "devDependencies": {
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.7",
-    "prettier": "^3.2.5",
-    "turbo": "^1.13.4"
+    "postinstall": "cd backend && npm install"
   },
   "engines": {
     "node": ">=20.0.0"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.{json,md,css}": [
-      "prettier --write"
-    ]
   },
   "keywords": [
     "hybrid-code",
@@ -46,8 +25,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/hcdc-x/hcdcx-ai-plus.git"
-  },
-  "dependencies": {
-    "mongodb": "^7.2.0"
   }
 }
