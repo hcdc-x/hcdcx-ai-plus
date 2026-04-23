@@ -1,5 +1,8 @@
 {
   "build": {
     "rootDir": "backend"
+  },
+  "deploy": {
+    "startCommand": "cd backend && npm install && npm start"
   }
 }
