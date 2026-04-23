@@ -44,21 +44,21 @@ const io = new Server(server, {
 // Connect to MongoDB
 const startServer = async () => {
   try {
-    console.log("Starting server...");
-
-    await connectDB();
-    logger.info("MongoDB connected");
+    console.log("BOOT: starting server");
 
     const PORT = process.env.PORT || 8080;
 
     server.listen(PORT, "0.0.0.0", () => {
-      logger.info(`🚀 Backend running on port ${PORT}`);
-      logger.info(`📡 Environment: ${process.env.NODE_ENV || "development"}`);
+      console.log(`SERVER LIVE ON ${PORT}`);
     });
 
+    connectDB()
+      .then(() => console.log("MongoDB connected"))
+      .catch(err => console.error("MongoDB failed:", err));
+
   } catch (err) {
-    logger.error("Startup failed:", err);
-    process.exit(1); // IMPORTANT for Railway detection
+    console.error("Fatal startup error:", err);
+    process.exit(1);
   }
 };
 
@@ -80,11 +80,7 @@ app.use('/api/', rateLimiter);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'ok',
-    uptime: process.uptime(),
-    timestamp: Date.now()
-  });
+  res.status(200).send("OK");
 });
 
 // API Routes
